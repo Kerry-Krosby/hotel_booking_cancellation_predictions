@@ -1,23 +1,44 @@
-# hotel_booking_cancellation_predictions
 # Predicting Hotel Booking Cancellations
 
-A machine learning project by  Chip · Dajana · Kerry-Ann · Mary · Shivana · Tenchi
+> A machine learning project by: — Chip · Dajana · Kerry-Ann · Mary · Shivana · Tenchi
+
+---
 
 ## Overview
-Hotel booking cancellations cost the hospitality industry billions each year. Project Reserve builds a classification model 
-that predicts whether a hotel booking will be cancelled — before it happens — so hotels can take proactive action to protect revenue and improve guest experience.
+
+Hotel booking cancellations cost the hospitality industry billions each year. Project Reserve builds a classification model that predicts whether a hotel booking will be cancelled — before it happens — so hotels can take proactive action to protect revenue and improve guest experience.
 
 **The result:** An XGBoost model with **83% accuracy** and an estimated **~€41,000 in additional monthly profit** per hotel through smarter inventory and retention decisions.
 
+---
+
+## Table of Contents
+
+- [Problem Statement](#problem-statement)
+- [Dataset](#dataset)
+- [Data Preparation](#data-preparation)
+- [Exploratory Data Analysis](#exploratory-data-analysis)
+- [Model Development](#model-development)
+- [Results](#results)
+- [Key Drivers](#key-drivers)
+- [Business Applications](#business-applications)
+- [Project Structure](#project-structure)
+- [Tech Stack](#tech-stack)
+- [Team](#team)
+
+---
 
 ## Problem Statement
+
 Predict booking cancellations based on customer characteristics and booking details to help hotels:
+
 - Make smarter **operational and pricing decisions**
 - Reduce **unoccupied rooms** and recover lost revenue
 - Improve **guest experience** through targeted outreach
 
 **Target variable:** `booking_status` — Cancelled (1) or Not Cancelled (0)
 
+---
 
 ## Dataset
 
@@ -31,22 +52,31 @@ Predict booking cancellations based on customer characteristics and booking deta
 | Features | 20 |
 
 **Feature categories:**
+
 - **Booking Attributes** — lead time, arrival date, average daily rate, length of stay, reservation status, days on waitlist, deposit type
 - **Booking Behavior** — previous cancellations, repeated guest status, booking changes
 - **Customer Attributes** — number of adults/children, customer type, market segment
 - **Hotel/Room Details** — hotel type, meal preference, reserved room, parking spaces, special requests
 
+---
+
 ## Data Preparation
 
 Starting from 119,390 raw rows, the cleaning pipeline produced 85,012 final records — **97.27% of true unique records**.
 
-## | Step                  | Action                | Impact |
+| Step | Action | Impact |
 |---|---|---|
-| Remove duplicates| Kept real values only | −31,994 rows → 87,396 |
-| Handle missing values| Mode imputation for `children` (4 rows) and `country` (488 rows) | −0 rows |
-| Drop sparse features| Removed `agent` (12,193 missing) and `company` (82,137 missing) | Cleaner feature space |
-| Handle outliers| Transformed extreme values, binning, removed impossible values | −2,384 rows |
-| Multicollinearity| Dropped features causing high correlation | Reduced redundancy |
+| Remove duplicates | Kept real values only | −31,994 rows → 87,396 |
+| Handle missing values | Mode imputation for `children` (4 rows) and `country` (488 rows) | −0 rows |
+| Drop sparse features | Removed `agent` (12,193 missing) and `company` (82,137 missing) | Cleaner feature space |
+| Handle outliers | Transformed extreme values, binning, removed impossible values | −2,384 rows |
+| Multicollinearity | Dropped features causing high correlation | Reduced redundancy |
+
+**Additional considerations:**
+- No PII — customer identification data was not included in the dataset
+- Dates that were not the latest version were managed to retain real values
+
+---
 
 ## Exploratory Data Analysis
 
@@ -57,21 +87,24 @@ Key findings from the data:
 - **Peak summer months** (June–August) drive the most bookings *and* the most cancellations
 - Cancellation risk is highly concentrated among specific customer segments
 
-
+---
 
 ## Model Development
+
 Three classification models were trained and compared:
 
-## | Model|Accuracy|Precision|Recall | AUC |
-   |---|---|---|---|---|
-   | Logistic Regression  | 79.7%    | 69%       | 50%    | 0.846 |
-   | Random Forest        | 81.9%    | 71%       | 59%    | 0.877 |
-   | XGBoost (Tuned)      | 83.0%    | 73%       | 62%    | 0.893 |
+| Model | Accuracy | Precision | Recall | AUC |
+|---|---|---|---|---|
+| Logistic Regression | 79.7% | 69% | 50% | 0.846 |
+| Random Forest | 81.9% | 71% | 59% | 0.877 |
+| **XGBoost (Tuned)** ✅ | **83.0%** | **73%** | **62%** | **0.893** |
 
-**XGBoost:**
+**Why XGBoost?**
 - Best performance across all metrics
 - Strongest early targeting in cumulative lift chart — identifies high-risk cases far better than alternatives
 - No overfitting — results hold true for both historical and new data
+
+---
 
 ## Results
 
@@ -92,26 +125,29 @@ The final tuned XGBoost model achieves:
 
 *Profit estimate assumes: ADR = €110, avg. stay = 4 days, resell rate = 70%*
 
+---
+
 ## Key Drivers
 
-### Cancellation Drivers
-## |Driver|Impact |
+### 🚨 Cancellation Drivers
+
+| Driver | Impact |
 |---|---|
-| **Longer lead time**          | Bookings made 3+ months in advance are **15× more likely** to be cancelled |
-| **Previous cancellation**     | A guest who cancelled before is **21× more likely** to cancel again |
-| **Online Travel Agency**      | OTA bookings are **2.3× more likely** to cancel |
+| **Longer lead time** | Bookings made 3+ months in advance are **15× more likely** to be cancelled |
+| **Previous cancellation** | A guest who cancelled before is **21× more likely** to cancel again |
+| **Online Travel Agency** | OTA bookings are **2.3× more likely** to cancel |
 | **Higher average daily rate** | Premium rates **double** cancellation risk; the highest-priced rooms **triple** it |
 
-###Retention Drivers
+### ✅ Retention Drivers
 
-## |Driver|Impact |
+| Driver | Impact |
 |---|---|
 | **International guest** | 80% less likely to cancel than domestic guests |
-| **Needs parking**       | 99% less likely to cancel — virtually guaranteed to show up |
-| **Special requests**    | 47% less likely to cancel |
-| **Repeat guest**        | Significantly lower cancellation likelihood |
+| **Needs parking** | 99% less likely to cancel — virtually guaranteed to show up |
+| **Special requests** | 47% less likely to cancel |
+| **Repeat guest** | Significantly lower cancellation likelihood |
 
-
+---
 
 ## Business Applications
 
@@ -169,3 +205,10 @@ project-reserve/
 - **Models** — Logistic Regression, Random Forest, XGBoost
 - **Evaluation** — Confusion matrix, ROC-AUC, cumulative lift chart, profit estimation
 
+---
+
+## Team
+
+**InsightOut** — a data science consulting group.
+
+Chip · Dajana · Kerry-Ann · Mary · Shivana · Tenchi
