@@ -189,10 +189,4 @@ project-reserve/
 - **Models** — Logistic Regression, Random Forest, XGBoost
 - **Evaluation** — Confusion matrix, ROC-AUC, cumulative lift chart, profit estimation
 
----
 
-## Team
-
-**InsightOut** — a data science consulting group.
-
-Chip · Dajana · Kerry-Ann · Mary · Shivana · Tenchi
