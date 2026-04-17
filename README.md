@@ -62,7 +62,7 @@ Key findings from the data:
 ## Model Development
 Three classification models were trained and compared:
 |---|---|---|---|---|
-## | Model                | Accuracy | Precision | Recall | AUC |
+## | Model| Accuracy|Precision|Recall | AUC |
    | Logistic Regression  | 79.7%    | 69%       | 50%    | 0.846 |
    | Random Forest        | 81.9%    | 71%       | 59%    | 0.877 |
    | XGBoost (Tuned)      | 83.0%    | 73%       | 62%    | 0.893 |
