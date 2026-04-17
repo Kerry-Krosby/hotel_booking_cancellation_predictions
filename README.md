@@ -42,11 +42,11 @@ Starting from 119,390 raw rows, the cleaning pipeline produced 85,012 final reco
 
 ## | Step                  | Action                | Impact |
 |---|---|---|
-| Remove duplicates        | Kept real values only | −31,994 rows → 87,396 |
-| Handle missing values    | Mode imputation for `children` (4 rows) and `country` (488 rows) | −0 rows |
-| Drop sparse features     | Removed `agent` (12,193 missing) and `company` (82,137 missing) | Cleaner feature space |
-| Handle outliers          | Transformed extreme values, binning, removed impossible values | −2,384 rows |
-| Multicollinearity        | Dropped features causing high correlation | Reduced redundancy |
+| Remove duplicates| Kept real values only | −31,994 rows → 87,396 |
+| Handle missing values| Mode imputation for `children` (4 rows) and `country` (488 rows) | −0 rows |
+| Drop sparse features| Removed `agent` (12,193 missing) and `company` (82,137 missing) | Cleaner feature space |
+| Handle outliers| Transformed extreme values, binning, removed impossible values | −2,384 rows |
+| Multicollinearity| Dropped features causing high correlation | Reduced redundancy |
 
 ## Exploratory Data Analysis
 
@@ -60,7 +60,6 @@ Key findings from the data:
 
 
 ## Model Development
-
 Three classification models were trained and compared:
 |---|---|---|---|---|
 ## | Model                | Accuracy | Precision | Recall | AUC |
@@ -96,7 +95,7 @@ The final tuned XGBoost model achieves:
 
 ### Cancellation Drivers
 ## | Driver                     | Impact |
-
+|---|---|
 | **Longer lead time**          | Bookings made 3+ months in advance are **15× more likely** to be cancelled |
 | **Previous cancellation**     | A guest who cancelled before is **21× more likely** to cancel again |
 | **Online Travel Agency**      | OTA bookings are **2.3× more likely** to cancel |
@@ -105,7 +104,7 @@ The final tuned XGBoost model achieves:
 ###Retention Drivers
 
 ## | Driver               | Impact |
-
+|---|---|
 | **International guest** | 80% less likely to cancel than domestic guests |
 | **Needs parking**       | 99% less likely to cancel — virtually guaranteed to show up |
 | **Special requests**    | 47% less likely to cancel |
