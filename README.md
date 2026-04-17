@@ -41,6 +41,7 @@ Predict booking cancellations based on customer characteristics and booking deta
 Starting from 119,390 raw rows, the cleaning pipeline produced 85,012 final records — **97.27% of true unique records**.
 
 ## | Step                  | Action                | Impact |
+|---|---|---|
 | Remove duplicates        | Kept real values only | −31,994 rows → 87,396 |
 | Handle missing values    | Mode imputation for `children` (4 rows) and `country` (488 rows) | −0 rows |
 | Drop sparse features     | Removed `agent` (12,193 missing) and `company` (82,137 missing) | Cleaner feature space |
@@ -61,6 +62,7 @@ Key findings from the data:
 ## Model Development
 
 Three classification models were trained and compared:
+|---|---|---|---|---|
 ## | Model                | Accuracy | Precision | Recall | AUC |
    | Logistic Regression  | 79.7%    | 69%       | 50%    | 0.846 |
    | Random Forest        | 81.9%    | 71%       | 59%    | 0.877 |
@@ -76,7 +78,7 @@ Three classification models were trained and compared:
 The final tuned XGBoost model achieves:
 
 | Metric | Value |
-
+|---|---|
 | Accuracy | 83% |
 | Precision | 73% |
 | Recall (Cancellation Capture) | 62% |
