@@ -12,22 +12,6 @@ Hotel booking cancellations cost the hospitality industry billions each year. Pr
 
 ---
 
-## Table of Contents
-
-- [Problem Statement](#problem-statement)
-- [Dataset](#dataset)
-- [Data Preparation](#data-preparation)
-- [Exploratory Data Analysis](#exploratory-data-analysis)
-- [Model Development](#model-development)
-- [Results](#results)
-- [Key Drivers](#key-drivers)
-- [Business Applications](#business-applications)
-- [Project Structure](#project-structure)
-- [Tech Stack](#tech-stack)
-- [Team](#team)
-
----
-
 ## Problem Statement
 
 Predict booking cancellations based on customer characteristics and booking details to help hotels:
