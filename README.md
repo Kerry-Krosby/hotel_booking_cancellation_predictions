@@ -61,8 +61,9 @@ Key findings from the data:
 
 ## Model Development
 Three classification models were trained and compared:
-|---|---|---|---|---|
-## | Model| Accuracy|Precision|Recall | AUC |
+
+## | Model|Accuracy|Precision|Recall | AUC |
+   |---|---|---|---|---|
    | Logistic Regression  | 79.7%    | 69%       | 50%    | 0.846 |
    | Random Forest        | 81.9%    | 71%       | 59%    | 0.877 |
    | XGBoost (Tuned)      | 83.0%    | 73%       | 62%    | 0.893 |
@@ -94,7 +95,7 @@ The final tuned XGBoost model achieves:
 ## Key Drivers
 
 ### Cancellation Drivers
-## | Driver                     | Impact |
+## |Driver|Impact |
 |---|---|
 | **Longer lead time**          | Bookings made 3+ months in advance are **15× more likely** to be cancelled |
 | **Previous cancellation**     | A guest who cancelled before is **21× more likely** to cancel again |
@@ -103,7 +104,7 @@ The final tuned XGBoost model achieves:
 
 ###Retention Drivers
 
-## | Driver               | Impact |
+## |Driver|Impact |
 |---|---|
 | **International guest** | 80% less likely to cancel than domestic guests |
 | **Needs parking**       | 99% less likely to cancel — virtually guaranteed to show up |
